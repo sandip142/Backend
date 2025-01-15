@@ -3,7 +3,7 @@ const User = require("../models/User");
 
 const router = express.Router();
 
-// POST /signup - Register a new user
+
 router.post("/signup", async (req, res) => {
   const { firstName, lastName, dob, address, email, password } = req.body;
 
@@ -12,7 +12,7 @@ router.post("/signup", async (req, res) => {
     return res.status(400).json({ error: "All fields are required" });
   }
 
-  // Validate email format
+
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
     return res.status(400).json({ error: "Invalid email format" });
@@ -27,13 +27,13 @@ router.post("/signup", async (req, res) => {
   }
 
   try {
-    // Check if the email already exists
+    
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ error: "Email is already registered" });
     }
 
-    // Create and save the user
+  
     const user = new User({ firstName, lastName, dob, address, email, password });
     await user.save();
 

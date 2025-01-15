@@ -8,19 +8,18 @@ dotenv.config();
 
 const app = express();
 
-// Middleware to parse JSON and form data
-app.use(express.json()); // For JSON data
-app.use(express.urlencoded({ extended: true })); // For form URL-encoded data
 
-// Enable CORS for all origins (or specify origins as needed)
-app.use(cors()); // This allows all domains, for more specific control, you can pass an options object
+app.use(express.json()); 
+app.use(express.urlencoded({ extended: true })); 
 
-// Routes
+
+app.use(cors()); 
+
+
 app.use('/api/users', userRoutes);
 
 const PORT = process.env.PORT || 5000;
 
-// Database connection
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
