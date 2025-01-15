@@ -15,6 +15,9 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cors()); 
 
+app.get('/', async(req,res)=>{
+   res.send("server running")
+})
 
 app.use('/api/users', userRoutes);
 
