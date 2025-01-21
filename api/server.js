@@ -9,14 +9,14 @@ dotenv.config();
 const app = express();
 
 
-app.use(express.json()); 
-app.use(express.urlencoded({ extended: true })); 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 
-app.use(cors()); 
+app.use(cors());
 
-app.get('/', async(req,res)=>{
-   res.json("server running")
+app.get('/', async (req, res) => {
+  res.json("server running")
 })
 
 app.use('/api/users', userRoutes);
